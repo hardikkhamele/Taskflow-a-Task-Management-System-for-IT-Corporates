@@ -1,0 +1,353 @@
+@import "tailwindcss";
+
+/* =====================================================
+   TASKFLOW PRO — Exact Design System Tokens
+   ===================================================== */
+
+:root {
+  --navy:       #1B3A6B;
+  --navy-dark:  #14356E;
+  --gold-start: #FFC933;
+  --gold-end:   #FF8C00;
+  --content-bg: #F4F5F7;
+  --link-blue:  #2A6BD6;
+  --body-text:  #333333;
+  --border:     #E5E7EB;
+  --white:      #FFFFFF;
+
+  /* Card palette (rotation) */
+  --card-1: #2DD4A0;
+  --card-2: #F4516C;
+  --card-3: #4A80D4;
+  --card-4: #F5A623;
+  --card-5: #8E44AD;
+  --card-6: #2C3E50;
+
+  /* Status badge colors */
+  --status-ongoing-bg:   #FFF8E1;
+  --status-ongoing-bd:   #F59E0B;
+  --status-ongoing-txt:  #92400E;
+  --status-pending-bg:   #F5F5F5;
+  --status-pending-bd:   #9CA3AF;
+  --status-pending-txt:  #4B5563;
+  --status-done-bg:      #F0FDF4;
+  --status-done-bd:      #22C55E;
+  --status-done-txt:     #166534;
+  --status-overdue-bg:   #FEF2F2;
+  --status-overdue-bd:   #EF4444;
+  --status-overdue-txt:  #991B1B;
+}
+
+/* =====================================================
+   GLOBAL RESETS
+   ===================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--content-bg);
+  color: var(--body-text);
+  font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--link-blue);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* =====================================================
+   EXACT SIDEBAR GRADIENT (logo box + sidebar bg)
+   ===================================================== */
+.sidebar-gradient {
+  background: linear-gradient(180deg, var(--gold-start) 0%, var(--gold-end) 100%);
+}
+.logo-gradient {
+  background: linear-gradient(135deg, var(--gold-start) 0%, var(--gold-end) 100%);
+}
+
+/* =====================================================
+   HEADER ICON BADGE BUTTONS
+   ===================================================== */
+.header-icon-btn {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  flex-shrink: 0;
+  transition: opacity 0.15s;
+  color: white;
+}
+.header-icon-btn:hover { opacity: 0.85; }
+.header-icon-btn .notif-badge {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  background: #EF4444;
+  color: white;
+  font-size: 8.5px;
+  font-weight: 800;
+  border-radius: 999px;
+  min-width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2px;
+  border: 1.5px solid white;
+}
+
+/* =====================================================
+   STATUS BADGES (used in tables & kanban)
+   ===================================================== */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 700;
+  border: 1.5px solid;
+  white-space: nowrap;
+}
+.status-ongoing   { background: var(--status-ongoing-bg);  border-color: var(--status-ongoing-bd);  color: var(--status-ongoing-txt); }
+.status-pending   { background: var(--status-pending-bg);  border-color: var(--status-pending-bd);  color: var(--status-pending-txt); }
+.status-completed { background: var(--status-done-bg);     border-color: var(--status-done-bd);     color: var(--status-done-txt); }
+.status-overdue   { background: var(--status-overdue-bg);  border-color: var(--status-overdue-bd);  color: var(--status-overdue-txt); }
+
+/* =====================================================
+   CONTENT PANEL (white cards with shadow)
+   ===================================================== */
+.content-panel {
+  background: white;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  overflow: hidden;
+}
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--border);
+}
+.panel-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.panel-view-all {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--link-blue);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  white-space: nowrap;
+}
+
+/* =====================================================
+   STAT CARDS
+   ===================================================== */
+.stat-card {
+  border-radius: 12px;
+  color: white;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 110px;
+  flex: 1;
+}
+.stat-card-label {
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0.92;
+  text-align: center;
+  letter-spacing: 0.2px;
+}
+.stat-card-value {
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1;
+  text-align: center;
+}
+
+/* =====================================================
+   QUICK ACTION BUTTONS
+   ===================================================== */
+.quick-btn {
+  width: 100%;
+  padding: 9px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: opacity 0.15s, transform 0.1s;
+}
+.quick-btn:hover { opacity: 0.9; transform: translateX(2px); text-decoration: none; color: white; }
+
+/* =====================================================
+   SIDEBAR NAV ITEM
+   ===================================================== */
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--body-text);
+  cursor: pointer;
+  transition: background 0.1s;
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  position: relative;
+  user-select: none;
+}
+.sidebar-nav-item:hover {
+  background: #F8F9FA;
+  text-decoration: none;
+}
+.sidebar-nav-item.active {
+  background: transparent;
+  color: var(--link-blue);
+  font-weight: 600;
+  border-left: 3px solid var(--link-blue);
+}
+
+/* =====================================================
+   BREADCRUMB
+   ===================================================== */
+.breadcrumb-bar {
+  background: var(--content-bg);
+  border-bottom: 1px solid #DDE2EC;
+  padding: 0 20px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #6B7280;
+}
+.breadcrumb-bar a { color: var(--link-blue); font-weight: 500; font-size: 13px; }
+.breadcrumb-bar .sep { color: #9CA3AF; font-size: 11px; }
+
+/* =====================================================
+   FORM ELEMENTS (within panels)
+   ===================================================== */
+.form-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--body-text);
+  background: #F9FAFB;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  font-family: inherit;
+}
+.form-input:focus {
+  border-color: var(--link-blue);
+  background: white;
+  box-shadow: 0 0 0 2px rgba(42,107,214,0.15);
+}
+
+/* =====================================================
+   TABLES
+   ===================================================== */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data-table thead tr { background: #F8FAFC; }
+.data-table th {
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--border);
+}
+.data-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #F0F4F8;
+  color: var(--body-text);
+  font-weight: 400;
+  font-size: 13px;
+  vertical-align: middle;
+}
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tbody tr:hover { background: #F8FAFC; }
+.data-table td a { color: var(--link-blue); font-weight: 600; }
+
+/* =====================================================
+   PROGRESS BARS
+   ===================================================== */
+.progress-bar-track {
+  height: 7px;
+  background: #E5E7EB;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.5s ease;
+}
+
+/* =====================================================
+   CUSTOM SCROLLBAR
+   ===================================================== */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #CBD5E0; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: #A0AEC0; }
+
+/* =====================================================
+   KANBAN COLUMN HEADER
+   ===================================================== */
+.kanban-col-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  font-weight: 700;
+  font-size: 13px;
+  color: white;
+  border-radius: 10px 10px 0 0;
+}
+.kanban-count-badge {
+  padding: 1px 9px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.28);
+  font-weight: 800;
+  font-size: 11px;
+  border: 1px solid rgba(255,255,255,0.4);
+}
